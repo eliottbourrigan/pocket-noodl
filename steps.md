@@ -1,0 +1,3 @@
+- run `setup.sh` to install dependencies
+- run `run.sh` to start the server
+- create admin user on pocketbase `./pocketbase admin create test@example.com 1234567890`

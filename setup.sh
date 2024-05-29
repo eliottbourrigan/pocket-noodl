@@ -1,10 +1,3 @@
-# pocket-noodl
-
-Debian
-
-```bash
-# update package list
-sudo apt update
 sudo full-upgrade
 
 # install build tools
@@ -38,7 +31,8 @@ npm install -g http-server
 # install glances 
 pip install glances
 
+# bloquer les connexions externes au port 8090
+sudo ufw deny 8090
+
 # run glances (port 61208) & http-server (port 8080) & pocketbase (port 8090)
 glances -w & http-server ./client/build & ./server/pocketbase/pocketbase serve
-
-```

@@ -1,0 +1,13 @@
+version: '1.0'
+
+services:
+  pb:
+    image: pb:latest
+    container_name: pb
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./pb:/app/pb
+    environment:
+      - HOME=/app/pb
+    command: npm run dev
