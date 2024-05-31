@@ -1,3 +1,14 @@
-- run `setup.sh` to install dependencies
-- run `run.sh` to start the server
-- create admin user on pocketbase `./pocketbase admin create test@example.com 1234567890`
+# Develop
+
+- 
+
+# Deploy
+
+- Build Noodl app
+- Export collections from Pocketbase to ./pb/schema.json
+- Push project to GitHub
+
+- Clone project using SSH
+- Start everything using docker-compose
+- Create PocketBase admin
+- Import collections to Pocketbase remote

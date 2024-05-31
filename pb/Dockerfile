@@ -9,8 +9,12 @@ RUN apk add --no-cache \
 # download and unzip PocketBase
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
 RUN unzip /tmp/pb.zip -d /pb/
+RUN /pb/pocketbase admin create $PB_ADMIN_EMAIL $PB_ADMIN_PASSWORD
 
 EXPOSE 8080
 
 # start PocketBase
 CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
+
+# docker build -t pb .
+# docker run -d -p 8080:8080 pb

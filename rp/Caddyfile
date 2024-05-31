@@ -1,0 +1,4 @@
+helloworld.localhost:443 {
+    reverse_proxy ui:8090
+    tls internal
+}

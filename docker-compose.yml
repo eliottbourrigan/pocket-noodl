@@ -2,12 +2,32 @@ version: '1.0'
 
 services:
   pb:
-    image: pb:latest
-    container_name: pb
+    build:
+      context: ./pb
+      dockerfile: Dockerfile
+    container_name: pb-container
     ports:
       - "8080:8080"
-    volumes:
-      - ./pb:/app/pb
+    restart: unless-stopped
     environment:
-      - HOME=/app/pb
-    command: npm run dev
+      - PB_ADMIN_EMAIL=${PB_ADMIN_EMAIL}
+      - PB_ADMIN_PASSWORD=${PB_ADMIN_PASSWORD}
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: ui-container
+    ports:
+      - "8090:8090"
+    restart: unless-stopped
+  
+  rp:
+    image: caddy:2.7-alpine
+    container_name: rp-container
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./rp/Caddyfile:/etc/caddy/Caddyfile:ro
+    restart: unless-stopped
